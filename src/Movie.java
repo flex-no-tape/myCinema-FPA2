@@ -1,0 +1,3 @@
+//Model
+public class Movie {
+}
