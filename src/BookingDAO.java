@@ -18,8 +18,8 @@ public class BookingDAO {
         try(Connection conn = DatabaseManager.getConnection();
         PreparedStatement pstmt = conn.prepareStatement(sql)){
 
-            pstmt.setString(1, booking.getUsername());
-            pstmt.setInt(2, booking.getBookingScreeningID()); // FIX ME - IMPLEMENT PASSWORD HASHING
+            pstmt.setString(1, booking.getUser().getUsername());
+            pstmt.setInt(2, booking.getScreening().getScreening_id()); // FIX ME - IMPLEMENT PASSWORD HASHING
             pstmt.setInt(3, booking.getNumAdultTickets());
             pstmt.setInt(4, booking.getNumChildTickets());
             pstmt.setString(5, booking.getSeatInfo());
@@ -41,12 +41,12 @@ public class BookingDAO {
         try(Connection conn = DatabaseManager.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
-            pstmt.setInt(1, booking.getBookingScreeningID());
+            pstmt.setInt(1, booking.getScreening().getScreening_id());
             pstmt.setInt(2, booking.getNumAdultTickets());
             pstmt.setInt(3, booking.getNumChildTickets());
             pstmt.setString(4, booking.getSeatInfo());
             pstmt.setString(5, booking.getBookingNote());
-            pstmt.setString(6, booking.getUsername());
+            pstmt.setString(6, booking.getUser().getUsername());
 
 
             int rowsAffected = pstmt.executeUpdate();
@@ -60,7 +60,15 @@ public class BookingDAO {
     public List<Booking> getBookings(User user){
         List<Booking> userBookings = new ArrayList<>();
 
-        String sql = "SELECT * FROM bookings WHERE username = ? ORDER BY booking_id DESC";
+        String sql = "SELECT b.booking_id, b.username, b.adult_tickets, b.child_tickets, " +
+                "b.seat_info, b.note, b.record_date, " +
+                "s.screening_id, s.cinema_name, s.screening_date, s.screening_time, " +
+                "m.movie_id, m.title, m.genre, m.classification, m.rating " +
+                "FROM bookings b " +
+                "JOIN screenings s ON b.screening_id = s.screening_id " +
+                "JOIN movies m ON s.movie_id = m.movie_id " +
+                "WHERE b.username = ? " +
+                "ORDER BY b.booking_id DESC";
 
         try(Connection conn = DatabaseManager.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -69,17 +77,33 @@ public class BookingDAO {
 
             try(ResultSet rs = pstmt.executeQuery()){
                 while(rs.next()){
-                    int bookingID = rs.getInt("booking_id");
-                    int screeningID = rs.getInt("screening_id");
-                    int numAdultTickets = rs.getInt("adult_tickets");
-                    int numChildTickets = rs.getInt("child_tickets");
-                    String seatInfo = rs.getString("seat_info");
-                    String bookingNote = rs.getString("note");
-                    String recordDate = rs.getString("record_date");
+                    Movie movie = new Movie(
+                        rs.getInt("movie_id"),
+                        rs.getString("title"),
+                        rs.getString("genre"),
+                        rs.getString("classification"),
+                        rs.getInt("rating")
+                    );
 
+                    Screening screening = new Screening(
+                        rs.getInt("screening_id"),
+                        movie,
+                        rs.getString("cinema_name"),
+                        rs.getString("screening_date"),
+                        rs.getString("screening_time")
+                    );
 
-                    Booking booking = new Booking(bookingID, user.getUsername(), screeningID,
-                                                  numAdultTickets, numChildTickets, seatInfo, bookingNote, recordDate);
+                   Booking booking = new Booking(
+                       rs.getInt("booking_id"),
+                       user,
+                       screening,
+                       rs.getInt("adult_tickets"),
+                       rs.getInt("child_tickets"),
+                       rs.getString("seat_info"),
+                       rs.getString("note"),
+                       rs.getString("record_date")
+                    );
+
                     userBookings.add(booking);
                 }
             }
@@ -98,7 +122,7 @@ public class BookingDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setInt(1, booking.getBookingID());
-            pstmt.setString(2, booking.getUsername());
+            pstmt.setString(2, booking.getUser().getUsername());
 
            int rowsAffected = pstmt.executeUpdate();
            return rowsAffected > 0;
