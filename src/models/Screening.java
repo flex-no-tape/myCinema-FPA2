@@ -1,3 +1,5 @@
+package models;
+
 //Model
 public class Screening {
     private int screening_id;

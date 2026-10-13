@@ -1,3 +1,10 @@
+package dao;
+
+import models.Booking;
+import models.User;
+import models.Movie;
+import models.Screening;
+import utils.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +23,7 @@ public class BookingDAO {
                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection conn = DatabaseManager.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement(sql)){
+            PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, booking.getUser().getUsername());
             pstmt.setInt(2, booking.getScreening().getScreening_id()); // FIX ME - IMPLEMENT PASSWORD HASHING
@@ -29,7 +36,7 @@ public class BookingDAO {
             pstmt.executeUpdate();
             return true;
         }catch(SQLException e){
-            System.err.println("BookingDAO: Booking failed: " + e.getMessage());
+            System.err.println("dao.BookingDAO: models.Booking failed: " + e.getMessage());
             return false;
         }
     }
@@ -52,7 +59,7 @@ public class BookingDAO {
             int rowsAffected = pstmt.executeUpdate();
             return rowsAffected > 0;
         }catch(SQLException e){
-            System.err.println("BookingDAO: Update to booking failed: " + e.getMessage());
+            System.err.println("dao.BookingDAO: Update to booking failed: " + e.getMessage());
             return false;
         }
     }
@@ -109,7 +116,7 @@ public class BookingDAO {
             }
             return userBookings;
         }catch (SQLException e){
-            System.err.println("BookingDAO: Error returning previous user bookings: " + e.getMessage());
+            System.err.println("dao.BookingDAO: Error returning previous user bookings: " + e.getMessage());
             return null;
         }
     }
@@ -128,7 +135,7 @@ public class BookingDAO {
            return rowsAffected > 0;
 
         }catch(SQLException e){
-            System.err.println("BookingDAO: Failed to cancel booking: " + e.getMessage());
+            System.err.println("dao.BookingDAO: Failed to cancel booking: " + e.getMessage());
             return false;
         }
     }

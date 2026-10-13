@@ -1,3 +1,8 @@
+package dao;
+
+import models.Movie;
+import models.Screening;
+import utils.DatabaseManager;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +32,7 @@ public class ScreeningDAO {
             }
             return screeningsList;
         }catch(SQLException e){
-            System.err.println("ScreeningDAO: Failed to get screenings: " + e.getMessage());
+            System.err.println("dao.ScreeningDAO: Failed to get screenings: " + e.getMessage());
             return null;
         }
     }

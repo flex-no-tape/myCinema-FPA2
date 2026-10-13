@@ -1,3 +1,7 @@
+package dao;
+
+import models.Movie;
+import utils.DatabaseManager;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -28,7 +32,7 @@ public class MovieDAO {
             }
             return moviesList;
         }catch(SQLException e){
-            System.err.println("MovieDAO: Failed to get list of movies: " + e.getMessage());
+            System.err.println("dao.MovieDAO: Failed to get list of movies: " + e.getMessage());
             return null;
         }
     }

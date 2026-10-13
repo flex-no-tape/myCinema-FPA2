@@ -1,4 +1,4 @@
-//DAO
+package utils;//DAO
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ public class DatabaseManager {
 
     //Attempts to establish and return connection to sqlite DB - if connection fails then an exception is thrown
     public static Connection getConnection() throws SQLException{
-        System.out.println("DatabaseManager: Initialising connection with Database");
+        System.out.println("utils.DatabaseManager: Initialising connection with Database");
         return DriverManager.getConnection(url);
     }
 
@@ -21,7 +21,7 @@ public class DatabaseManager {
         try(Connection conn = getConnection();
             Statement stmt = conn.createStatement()){
 
-            System.out.println("DatabaseManager: Ensuring tables are created");
+            System.out.println("utils.DatabaseManager: Ensuring tables are created");
             //Create users table
             String createUsersTable = "CREATE TABLE IF NOT EXISTS users ("
                     + "username TEXT PRIMARY KEY, "
@@ -66,7 +66,7 @@ public class DatabaseManager {
             stmt.execute(createBookingsTable);
 
         } catch (SQLException e) {
-            System.err.println("DatabaseManager: Error initializing the database: " + e.getMessage());
+            System.err.println("utils.DatabaseManager: Error initializing the database: " + e.getMessage());
         }
     }
 }

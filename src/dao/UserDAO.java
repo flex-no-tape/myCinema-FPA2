@@ -1,4 +1,7 @@
-//DAO
+package dao;
+
+import models.User;
+import utils.DatabaseManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +24,7 @@ public class UserDAO {
 
         } catch (SQLException e){
             //Duplicate username will throw an exception
-            System.err.println("UserDAO: User Registration Failed: " + e.getMessage());
+            System.err.println("dao.UserDAO: models.User Registration Failed: " + e.getMessage());
             return false;
         }
     }
@@ -30,7 +33,7 @@ public class UserDAO {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
         try (Connection conn = DatabaseManager.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement(sql)){
+             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, username);
             pstmt.setString(2, password); //FIX ME - when hashing is setup some change might be required here
@@ -47,7 +50,7 @@ public class UserDAO {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("UserDAO: Login Error: " + e.getMessage());
+            System.err.println("dao.UserDAO: Login Error: " + e.getMessage());
         }
         return null;
     }
@@ -68,7 +71,7 @@ public class UserDAO {
             return rowsAffected > 0;
 
         } catch(SQLException e){
-            System.err.println("UserDAO: Updating user failed: " + e.getMessage());
+            System.err.println("dao.UserDAO: Updating user failed: " + e.getMessage());
             return false;
         }
     }
@@ -86,7 +89,7 @@ public class UserDAO {
 
             return rowsAffected > 0;
         } catch(SQLException e){
-            System.err.println("UserDAO: Updating password failed: " + e.getMessage());
+            System.err.println("dao.UserDAO: Updating password failed: " + e.getMessage());
             return false;
         }
     }

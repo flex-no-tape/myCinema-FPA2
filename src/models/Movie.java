@@ -1,3 +1,5 @@
+package models;
+
 //Model
 public class Movie {
     private int movieID;// DELETE THIS MAYBE IF NOT USED

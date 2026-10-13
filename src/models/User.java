@@ -1,3 +1,5 @@
+package models;
+
 //Model
 public class User {
     private String username;
