@@ -24,6 +24,34 @@ public class SignUpController {
     @FXML
     public void handleSignUp(){
         System.out.println("Sign up button clicked!");
-        //Registration logic
+        dao.UserDAO newUserDAO = new UserDAO();
+
+        String firstName = firstNameField.getText();
+        String lastName = lastNameField.getText();
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        if(firstName.trim().isEmpty() ||
+                lastName.trim().isEmpty() ||
+                username.trim().isEmpty() ||
+                password.trim().isEmpty()){
+            feedbackLabel.setText("Please enter all required information");
+            return;
+        }
+
+        //TODO: Validations
+
+        User newUser = new User(
+                firstName,
+                lastName,
+                username,
+                password
+        );
+
+        boolean registered = newUserDAO.registerUser(newUser);
+        //TODO
+        //If this is true then you can return to the home page because account is registered
+        //If false then an error occurred registering user
+
     }
 }
