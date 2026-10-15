@@ -35,8 +35,8 @@ public class LoginController {
 
         if(user != null){
             System.out.println("Successfully logged in for: " + user.getUsername());
-            //application.MyCinemaApp.setRoot("/views/DashboardView.fxml");
-            //switch screen
+            utils.UserSession.setLoggedInUser(user);
+            application.MyCinemaApp.setRoot("/views/DashboardView.fxml");
         }else{
             feedbackLabel.setText("Invalid username or password.");
         }

@@ -15,7 +15,8 @@ public class MyCinemaApp extends Application{
         primaryStage = stage;
 
         //initiialise the db to ensure its created and setup correctly
-        //utils.DatabaseManager.initialiseDB();
+        utils.DatabaseManager databaseManager = new utils.DatabaseManager();
+        databaseManager.initialiseDB();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml")); //Add url to view
         Parent root = loader.load();
@@ -41,11 +42,5 @@ public class MyCinemaApp extends Application{
 
     public static void main(String[] args){
         launch(args);
-//    utils.DatabaseManager database = new utils.DatabaseManager();
-//    database.initialiseDB();
-//
-//    models.User newUser = new models.User("fletcher139", "1234", "Fletcher", "Brown");
-//    dao.UserDAO userConn = new dao.UserDAO();
-//    userConn.registerUser(newUser);
     }
 }

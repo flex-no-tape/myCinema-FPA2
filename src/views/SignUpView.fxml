@@ -17,7 +17,7 @@
             </padding>
             <children>
                 <!-- Title Label -->
-                <Label text="MyCinema SignUp" textAlignment="CENTER">
+                <Label text="MyCinema Sign Up" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
