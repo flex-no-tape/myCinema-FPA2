@@ -4,19 +4,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
-    <children>
-        <VBox alignment="CENTER"  spacing="20.0" style="-fx-background-color: #ffffff; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);">
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+    <top>
+        <HBox alignment="CENTER"  spacing="20.0" style="-fx-background-color: #ffffff;" >
             <padding>
                 <Insets bottom="40.0" left="100.0" right="100.0" top="40.0" />
             </padding>
-            <children>
                 <!-- Title label - Welcome to MyCinema, {firstName, lastName} -->
                 <Label fx:id="welcomeLabel" textAlignment="CENTER">
                     <font>
@@ -24,7 +24,42 @@
                     </font>
                 </Label>
                 <Label text="UI Design is my passion." textFill="#666666" />
-            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox alignment="CENTER_LEFT"  prefHeight="60" style="-fx-background-color: #41EEF4">
+            <padding>
+                <Insets left="20.0" right="100.0" top="40.0" />
+            </padding>
+            <Label alignment="TOP_CENTER" text="Dashboard" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <Button alignment="CENTER" fx:id="viewBookingsButton" mnemonicParsing="false" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="View Bookings" />
+            <Button alignment="CENTER" fx:id="exportButton" mnemonicParsing="false" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Export Bookings" />
+            <Button alignment="CENTER" fx:id="editAccountButton" mnemonicParsing="false" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Edit Account" />
+            <Button alignment="CENTER" fx:id="logOutButton" mnemonicParsing="false" style="-fx-background-color: #9f0812; -fx-text-fill: white;" text="Log Out" />
         </VBox>
-    </children>
-</StackPane>
+    </left>
+
+    <center>
+        <VBox spacing="15.0" style="-fx-background-color: #F10AA6">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+            <Label text="Select a Movie">
+                <font>
+                    <Font name="System Bold" size="18.0"/>
+                </font>
+            </Label>
+            <TableView fx:id="movieTable" VBox.vgrow="ALWAYS">
+
+            </TableView>
+
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Book Selected Movie" />
+        </VBox>
+    </center>
+
+</BorderPane>

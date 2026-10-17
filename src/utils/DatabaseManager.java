@@ -34,7 +34,7 @@ public class DatabaseManager {
             //Creates movie table - uses an autoincrementing integer as the primary key
             String createMoviesTable = "CREATE TABLE IF NOT EXISTS movies ("
                     + "movie_id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "title TEXT NOT NULL, "
+                    + "title TEXT UNIQUE NOT NULL, "
                     + "genre TEXT, "
                     + "classification TEXT, "
                     + "rating REAL"
