@@ -3,6 +3,8 @@ package controllers;
 import dao.MovieDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import models.Movie;
 import utils.UserSession;
 import javafx.scene.control.*;
@@ -45,6 +47,32 @@ public class DashboardController {
         movieTable.setItems(observableMovies);
 
 
+    }
+
+    public void handleBookSelectedMovie(){
+        Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
+
+        if(selectedMovie == null){
+            //TODO: Feedback Label
+            System.out.println("No movie selected");
+            return;
+        }
+
+        System.out.println("Entering booking form for: " + selectedMovie.getTitle());
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/BookingView.fxml"));
+            Parent root = loader.load();
+
+            BookingController bookingController = loader.getController();
+
+            bookingController.initialize(selectedMovie);
+
+            movieTable.getScene().setRoot(root);
+        } catch(Exception e) {
+            System.err.println("Error loading bookingscreen: " + e.getMessage());
+        }
+        //TODO: pass movie to booking controller
     }
 
     public void handleLogOut(){

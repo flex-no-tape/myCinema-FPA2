@@ -47,7 +47,8 @@ public class DatabaseManager {
                     "cinema_name TEXT NOT NULL," +
                     "screening_date TEXT NOT NULL," +
                     "screening_time TEXT NOT NULL," +
-                    "FOREIGN KEY(movie_id) REFERENCES movies(movie_id)" +
+                    "FOREIGN KEY(movie_id) REFERENCES movies(movie_id)," +
+                    "UNIQUE(movie_id, cinema_name, screening_date, screening_time)" +
                     ");";
             stmt.execute(createScreeningsTable);
 

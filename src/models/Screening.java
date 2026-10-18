@@ -35,6 +35,11 @@ public class Screening {
     public String getCinemaName(){return cinemaName;}
     public String getDate(){return date;}
     public String getTime(){return time;}
+
+    @Override
+    public String toString() {
+        // This dictates exactly how the object looks inside the ComboBox
+        return date + " at " + time;
+    }
 }
 
-//SETTERS
