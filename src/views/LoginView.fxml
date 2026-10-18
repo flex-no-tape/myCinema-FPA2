@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<!-- The Root node is a StackPane to center the login box -->
-<!-- Make sure fx:controller points to your actual package and class name -->
+
 <StackPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
     <children>
-        <!-- The VBox acts as the white "Login Card" in the center -->
+
         <VBox alignment="CENTER"  spacing="20.0" style="-fx-background-color: #ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);">
             <padding>
                 <Insets bottom="40.0" left="100.0" right="100.0" top="40.0" />
             </padding>
             <children>
-                <!-- Title Label -->
+                <!--title label-->
                 <Label text="Welcome to MyCinema" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="24.0" />
@@ -30,7 +29,7 @@
                 <Label text="Please log in to manage your bookings." textFill="#666666" />
                 <Label text="UI Design is my passion." textFill="#666666" />
 
-                <!-- Username Input -->
+                <!--username input-->
                 <VBox spacing="5.0">
                     <children>
                         <Label text="Username">
@@ -58,10 +57,10 @@
                 <!--kept empty initially but will turn red via the controller-->
                 <Label fx:id="feedbackLabel" textFill="#e74c3c" wrapText="true" />
 
-                <!-- Login Button triggers handleLogin() in the controller -->
+                <!-- login Button triggers handleLogin() in the controller -->
                 <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Log In" />
 
-                <!-- Hyperlink to swap to the Sign Up screen -->
+                <!-- Swap between signup screen -->
                 <Hyperlink onAction="#handleSignUpSwitch" text="Don't have an account? Sign Up" textFill="#3498db" />
             </children>
         </VBox>

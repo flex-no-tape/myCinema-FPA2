@@ -9,7 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Window;
 import models.Booking;
+import utils.ExportBookings;
 import utils.UserSession;
 import dao.*;
 
@@ -77,7 +79,7 @@ public class HistoryController {
 
         historyTable.getColumns().addAll(titleCol, cinemaCol, dateCol, timeCol, adultCol, childCol);
 
-        // 2. Load the data
+
         loadTableData();
     }
 
@@ -111,6 +113,12 @@ public class HistoryController {
     }
 
     @FXML
+    public void handleEditAccount(){
+        System.out.println("Switching to edit account screen");
+        application.MyCinemaApp.setRoot("/views/AccountView.fxml");
+    }
+
+    @FXML
     public void handleCancelBooking(){
         Booking selectedBooking = historyTable.getSelectionModel().getSelectedItem();
         boolean success = bookingDAO.deleteBooking(selectedBooking);
@@ -120,6 +128,12 @@ public class HistoryController {
             feedbackLabel.setText("Booking successfully cancelled");
         }
     };
+
+    @FXML
+    public void handleExportBookings(){
+        Window currentWindow = welcomeLabel.getScene().getWindow();
+        ExportBookings.exportBookingsToFile(currentWindow);
+    }
 
     @FXML
     public void switchToDashboard(){

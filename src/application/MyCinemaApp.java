@@ -17,7 +17,16 @@ public class MyCinemaApp extends Application{
         //initiialise the db to ensure its created and setup correctly
         utils.DatabaseManager databaseManager = new utils.DatabaseManager();
         databaseManager.initialiseDB();
+
+
+        /*
+        THE FOLLOWING LINE OF CODE IS TO POPULATE THE DB
+        IF THERE IS ANOTHER METHOD OF POPULATING DB WITH SCREENINGS
+        AND MOVIES THEN REMOVE THIS
+         */
         utils.PopulateDB.populateDB();
+
+
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginView.fxml")); //Add url to view
         Parent root = loader.load();

@@ -6,7 +6,7 @@ import utils.DatabaseManager;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-//DAO
+
 //This will fetch data from database of screening options for when user selects a movie from the dropdown
 public class ScreeningDAO {
     public List<Screening> getScreeningsForMovie(Movie movie){

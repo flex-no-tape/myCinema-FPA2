@@ -16,7 +16,7 @@ public class UserDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, user.getUsername());
-            pstmt.setString(2, user.getPassword()); // FIX ME - IMPLEMENT PASSWORD HASHING
+            pstmt.setString(2, user.getPassword());
             pstmt.setString(3, user.getFirstName());
             pstmt.setString(4, user.getLastName());
             pstmt.executeUpdate();
@@ -36,7 +36,7 @@ public class UserDAO {
              PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, username);
-            pstmt.setString(2, password); //FIX ME - when hashing is setup some change might be required here
+            pstmt.setString(2, password);
 
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){

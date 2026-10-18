@@ -59,7 +59,7 @@ public class DatabaseManager {
                     + "adult_tickets INTEGER NOT NULL, "
                     + "child_tickets INTEGER NOT NULL, "
                     + "seat_info TEXT NOT NULL, "
-                    + "note TEXT, " //validation of the 50 words max to happen in controller FIX ME - please ensure this is completed
+                    + "note TEXT, " //validation of the 50 words max to happen in controller
                     + "record_date TEXT NOT NULL, "
                     + "FOREIGN KEY(username) REFERENCES users(username)," //references an actual user enforce integrity
                     + "FOREIGN KEY(screening_id) REFERENCES screenings (screening_id)"

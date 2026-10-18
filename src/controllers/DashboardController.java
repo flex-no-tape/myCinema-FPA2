@@ -5,7 +5,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.stage.Window;
 import models.Movie;
+import utils.ExportBookings;
 import utils.UserSession;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -73,6 +75,12 @@ public class DashboardController {
         } catch(Exception e) {
             System.err.println("Error loading bookingscreen: " + e.getMessage());
         }
+    }
+
+    @FXML
+    public void handleExportBookings(){
+        Window currentWindow = welcomeLabel.getScene().getWindow();
+        ExportBookings.exportBookingsToFile(currentWindow);
     }
 
     @FXML

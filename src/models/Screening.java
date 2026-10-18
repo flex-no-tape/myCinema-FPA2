@@ -38,7 +38,7 @@ public class Screening {
 
     @Override
     public String toString() {
-        // This dictates exactly how the object looks inside the ComboBox
+        //This dictates  how the object looks inside the ComboBox
         return date + " at " + time;
     }
 }

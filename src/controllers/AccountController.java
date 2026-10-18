@@ -2,16 +2,15 @@ package controllers;
 
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import models.Movie;
-import models.Screening;
-import models.Booking;
+import javafx.stage.Window;
 import models.User;
+import utils.ExportBookings;
 import utils.UserSession;
 import dao.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +85,8 @@ public class AccountController {
 
     }
 
-    @FXML public void handleUpdatePassword(){
+    @FXML
+    public void handleUpdatePassword(){
         String oldPassword = oldPasswordField.getText().trim();
         String newPassword = newPasswordField.getText().trim();
 
@@ -130,6 +130,11 @@ public class AccountController {
             passwordFeedbackLabel.setText("Error occurred updating password");
         }
 
+    }
+    @FXML
+    public void handleExportBookings(){
+        Window currentWindow = welcomeLabel.getScene().getWindow();
+        ExportBookings.exportBookingsToFile(currentWindow);
     }
 
     @FXML

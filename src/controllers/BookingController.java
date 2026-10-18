@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Window;
 import models.Movie;
 import models.Screening;
 import models.Booking;
+import utils.ExportBookings;
 import utils.UserSession;
 import dao.*;
 
@@ -70,7 +72,7 @@ public class BookingController {
             childTicketsBox.getItems().add(i);
         }
 
-        // Set a default selection so it doesn't stay blank
+
         adultTicketsBox.getSelectionModel().selectFirst();
         childTicketsBox.getSelectionModel().selectFirst();
     }
@@ -138,6 +140,18 @@ public class BookingController {
             feedbackLabel.setStyle("-fx-text-fill: red;");
             feedbackLabel.setText("Database error. Please try again.");
         }
+    }
+
+    @FXML
+    public void handleExportBookings(){
+        Window currentWindow = welcomeLabel.getScene().getWindow();
+        ExportBookings.exportBookingsToFile(currentWindow);
+    }
+
+    @FXML
+    public void handleEditAccount(){
+        System.out.println("Switching to edit account screen");
+        application.MyCinemaApp.setRoot("/views/AccountView.fxml");
     }
 
     @FXML
