@@ -26,12 +26,12 @@ public class BookingDAO {
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, booking.getUser().getUsername());
-            pstmt.setInt(2, booking.getScreening().getScreening_id()); // FIX ME - IMPLEMENT PASSWORD HASHING
+            pstmt.setInt(2, booking.getScreening().getScreening_id());
             pstmt.setInt(3, booking.getNumAdultTickets());
             pstmt.setInt(4, booking.getNumChildTickets());
             pstmt.setString(5, booking.getSeatInfo());
             pstmt.setString(6, booking.getBookingNote());
-            pstmt.setString(7, LocalDate.now().toString()); //using the java library local date to get the current date when booking for the record date. THis should not be updated upon editing booking
+            pstmt.setString(7, LocalDate.now().toString()); //using the java library local date to get the current date when booking for the record date.
 
             pstmt.executeUpdate();
             return true;

@@ -2,7 +2,7 @@ package models;
 
 //Model
 public class Movie {
-    private int movieID;// DELETE THIS MAYBE IF NOT USED
+    private int movieID;
     private String movieTitle;
     private String genre;
     private String classification;
@@ -30,7 +30,7 @@ public class Movie {
         this.rating = rating;
     }
 
-    public int getMovieID(){return movieID;}//DELETE THIS IF UNUSED;
+    public int getMovieID(){return movieID;}
     public String getTitle(){return movieTitle;}
     public String getGenre(){return genre;}
     public String getClassification(){return classification;}

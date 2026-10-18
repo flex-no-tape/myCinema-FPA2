@@ -157,7 +157,7 @@ public class BookingController {
     @FXML
     public void switchToDashboard(){
         System.out.println("Returning to dashboard...");
-        application.MyCinemaApp.setRoot("/views/DashboardView.fxml"); //TODO: Decide on returning to home or not
+        application.MyCinemaApp.setRoot("/views/DashboardView.fxml");
     }
 
     @FXML

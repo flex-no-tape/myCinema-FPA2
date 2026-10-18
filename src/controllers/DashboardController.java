@@ -56,7 +56,6 @@ public class DashboardController {
         Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
 
         if(selectedMovie == null){
-            //TODO: Feedback Label
             System.out.println("No movie selected");
             return;
         }
