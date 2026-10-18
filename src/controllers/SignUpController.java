@@ -78,10 +78,14 @@ public void handleSignUp(){
         }
 
         //checks if there is whitespace within the fields
-        if(!firstName.trim().matches("\\S+")){
+        if((!firstName.trim().matches("\\S+")) ||
+                (!lastName.trim().matches("\\S+")) ||
+                (!username.trim().matches("\\S+")) ||
+                (!password.trim().matches("\\S+"))){
             feedbackLabel.setText("Fields cannot have whitespace");
             return;
         }
+
 
         User newUser = new User(
                 username.trim(),

@@ -76,14 +76,15 @@ public class UserDAO {
         }
     }
 
-    public boolean changePassword(User user){
-        String sql = "UPDATE users SET password = ? WHERE username = ?";
+    public boolean changePassword(User user, String oldPassword){
+        String sql = "UPDATE users SET password = ? WHERE username = ? AND password = ?";
 
         try(Connection conn = DatabaseManager.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
 
             pstmt.setString(1, user.getPassword());
             pstmt.setString(2, user.getUsername());
+            pstmt.setString(3, oldPassword);
 
             int rowsAffected = pstmt.executeUpdate();
 

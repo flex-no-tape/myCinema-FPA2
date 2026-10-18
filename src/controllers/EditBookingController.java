@@ -3,7 +3,6 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import models.Movie;
 import models.Screening;
 import models.Booking;
@@ -105,6 +104,12 @@ public class EditBookingController {
     public void switchToDashboard(){
         System.out.println("Returning to dashboard...");
         application.MyCinemaApp.setRoot("/views/DashboardView.fxml");
+    }
+
+    @FXML
+    public void handleViewBookings(){
+        System.out.println("Switching to booking history screen");
+        application.MyCinemaApp.setRoot("/views/HistoryView.fxml");
     }
 
     @FXML

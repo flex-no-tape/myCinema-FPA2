@@ -31,7 +31,7 @@
                 </font>
             </Label>
             <Button alignment="TOP_CENTER" maxWidth="Infinity" onAction="#switchToDashboard" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Dashboard" />
-            <Button fx:id="viewBookingsButton" alignment="TOP_CENTER" maxWidth="Infinity" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="View Bookings" />
+            <Button alignment="TOP_CENTER" maxWidth="Infinity" onAction="#handleViewBookings" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="View Bookings" />
             <Button fx:id="exportButton" alignment="TOP_CENTER" maxWidth="Infinity" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Export Bookings" />
             <Button fx:id="editAccountButton" alignment="TOP_CENTER" maxWidth="Infinity" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Edit Account" />
             <Region VBox.vgrow="ALWAYS" />

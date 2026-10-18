@@ -49,6 +49,7 @@ public class DashboardController {
 
     }
 
+    @FXML
     public void handleBookSelectedMovie(){
         Movie selectedMovie = movieTable.getSelectionModel().getSelectedItem();
 
@@ -74,11 +75,19 @@ public class DashboardController {
         }
     }
 
-    public void handViewBookings(){
+    @FXML
+    public void handleEditAccount(){
+        System.out.println("Switching to edit account screen");
+        application.MyCinemaApp.setRoot("/views/AccountView.fxml");
+    }
+
+    @FXML
+    public void handleViewBookings(){
         System.out.println("Switching to booking history screen");
         application.MyCinemaApp.setRoot("/views/HistoryView.fxml");
     }
 
+    @FXML
     public void handleLogOut(){
         System.out.println("Logging user out - Switching to login screen");
         UserSession.logOutUser();
