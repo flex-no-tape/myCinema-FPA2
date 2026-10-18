@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #2b2b2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditBookingController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #ffffff; -fx-border-color: #eeeeee; -fx-border-width: 0 0 2 0;">
+            <padding>
+                <Insets bottom="25.0" left="60.0" right="100.0" top="25.0" />
+            </padding>
+            <!-- Title label - Welcome to MyCinema, {firstName, lastName} -->
+            <Label fx:id="welcomeLabel" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox alignment="CENTER_LEFT" prefWidth="250.0" spacing="15.0" style="-fx-background-color: #2c3e50">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Label alignment="TOP_CENTER" text="Edit Booking" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+            <Button alignment="TOP_CENTER" maxWidth="Infinity" onAction="#switchToDashboard" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Dashboard" />
+            <Button  alignment="TOP_CENTER" maxWidth="Infinity" onAction="#handleViewBookings" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="View Bookings" />
+            <Button alignment="TOP_CENTER"  maxWidth="Infinity" onAction="#handleExportBookings" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Export Bookings" />
+            <Button alignment="TOP_CENTER" maxWidth="Infinity" onAction="#handleEditAccount" mnemonicParsing="false" style="-fx-background-color: #8da0b4; -fx-text-fill: white;" text="Edit Account" />
+            <Region VBox.vgrow="ALWAYS" />
+            <Button alignment="BOTTOM_CENTER" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #9f0812; -fx-text-fill: white;" text="Log Out" />
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="15.0" style="-fx-background-color: #f4f6f8">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <Label fx:id="bookingTitleLabel" textFill="#2c3e50">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+
+            <VBox spacing="5.0">
+                <Label text="Select Screening Location">
+                    <font><Font name="System Bold" size="12.0" /></font>
+                </Label>
+                <ComboBox fx:id="cinemaComboBox" maxWidth="Infinity" promptText="Choose a Cinema..." />
+
+                <Label text="Select Screening Time">
+                    <font><Font name="System Bold" size="12.0" /></font>
+                </Label>
+                <ComboBox fx:id="dateComboBox" maxWidth="Infinity" promptText="Choose a time..." />
+                <Label fx:id="feedbackLabel" wrapText="true" />
+            </VBox>
+
+            <Button alignment="CENTER" prefHeight="35.0" prefWidth="150.0" mnemonicParsing="false" onAction="#handleBookingConfirmation" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Confirm Edits" />
+        </VBox>
+    </center>
+
+</BorderPane>
