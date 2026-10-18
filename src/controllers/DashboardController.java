@@ -72,7 +72,11 @@ public class DashboardController {
         } catch(Exception e) {
             System.err.println("Error loading bookingscreen: " + e.getMessage());
         }
-        //TODO: pass movie to booking controller
+    }
+
+    public void handViewBookings(){
+        System.out.println("Switching to booking history screen");
+        application.MyCinemaApp.setRoot("/views/HistoryView.fxml");
     }
 
     public void handleLogOut(){

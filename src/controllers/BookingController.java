@@ -130,11 +130,11 @@ public class BookingController {
         );
         boolean success = bookingDAO.addBooking(booking);
 
-        if (success) {
+        if(success) {
             feedbackLabel.setStyle("-fx-text-fill: green;");
             feedbackLabel.setText("Success! Booking confirmed.");
             switchToDashboard();
-        } else {
+        }else{
             feedbackLabel.setStyle("-fx-text-fill: red;");
             feedbackLabel.setText("Database error. Please try again.");
         }

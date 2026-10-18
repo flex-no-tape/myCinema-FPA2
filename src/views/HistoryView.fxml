@@ -51,7 +51,9 @@
             </Label>
 
             <TableView fx:id="historyTable" VBox.vgrow="ALWAYS">
-                <!-- Columns will be injected via Java -->
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                </columnResizePolicy>
             </TableView>
 
             <Label fx:id="feedbackLabel" textFill="#e74c3c" />
@@ -60,7 +62,6 @@
                 <Button onAction="#handleCancelBooking" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" text="Cancel Booking" />
                 <Button onAction="#handleEditBooking" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold;" text="Edit Date/Time" />
             </HBox>
-        </VBox>
         </VBox>
     </center>
 
