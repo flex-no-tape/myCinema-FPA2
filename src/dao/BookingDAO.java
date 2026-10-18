@@ -43,7 +43,7 @@ public class BookingDAO {
 
     public boolean editBooking(Booking booking){
         String sql = "UPDATE bookings SET screening_id = ?," +
-                     "adult_tickets = ?, child_tickets = ?, seat_info = ?, note = ? WHERE username = ?";
+                     "adult_tickets = ?, child_tickets = ?, seat_info = ?, note = ? WHERE booking_id = ?";
 
         try(Connection conn = DatabaseManager.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql)){
@@ -53,7 +53,7 @@ public class BookingDAO {
             pstmt.setInt(3, booking.getNumChildTickets());
             pstmt.setString(4, booking.getSeatInfo());
             pstmt.setString(5, booking.getBookingNote());
-            pstmt.setString(6, booking.getUser().getUsername());
+            pstmt.setInt(6, booking.getBookingID());
 
 
             int rowsAffected = pstmt.executeUpdate();

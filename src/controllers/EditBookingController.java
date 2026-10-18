@@ -83,12 +83,14 @@ public class EditBookingController {
         Screening selectedScreening = dateComboBox.getValue();
 
         Booking booking = new Booking(
+                originalBooking.getBookingID(),
                 utils.UserSession.getLoggedInUser(),
                 selectedScreening,
                 originalBooking.getNumAdultTickets(),
                 originalBooking.getNumChildTickets(),
                 originalBooking.getSeatInfo(),
-                originalBooking.getBookingNote()
+                originalBooking.getBookingNote(),
+                originalBooking.getRecordDate()
         );
         boolean success = bookingDAO.editBooking(booking);
 
